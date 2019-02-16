@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 
-public class Garage1 implements Collection<Vehicule> {
+public class Garage1 implements Collection<Vehicule>, VehiculeComparator {
 
 	List<Vehicule> vehicules;
 
@@ -94,50 +93,27 @@ public class Garage1 implements Collection<Vehicule> {
 	}
 
 	public void resetPartielAll() {
-		for (Vehicule vehicule : this.getVehicules()) {
+		for (Vehicule vehicule : getVehicules()) {
 			vehicule.getCompteur().resetPartiel();
 		}
 	}
 
 	public void faireLePleinAll() {
-		for (Vehicule vehicule : this.getVehicules()) {
-			vehicule.faireLePlein();
+		for (Vehicule vehicule : getVehicules()) {
+			if (vehicule.getJauge() < 10.0) {
+				vehicule.faireLePlein();
+			}
 		}
 	}
 
+	@Override
 	public void triNoImmatriculion() {
-		Collections.sort(this.getVehicules());
+		Collections.sort(getVehicules());
 	}
 
-	public void triStatiqueCompteur() {
-		Collections.sort(getVehicules(), new Comparator<Vehicule>() {
-			@Override
-			public int compare(Vehicule vehicule1, Vehicule vehicule2) {
-				System.out.println("here!");
-				if (vehicule1.getCompteur().getTotalisateur() < vehicule2.getCompteur().getTotalisateur()) {
-					return -1;
-				} else if (vehicule1.getCompteur().getTotalisateur() > vehicule2.getCompteur().getTotalisateur()) {
-					return 1;
-				} else {
-					return 0;
-				}
-			}
-		});
-	}
-
+	@Override
 	public void triCompteur() {
-		Collections.sort(getVehicules(), new Comparator<Vehicule>() {
-			@Override
-			public int compare(Vehicule vehicule1, Vehicule vehicule2) {
-				if (vehicule1.getCompteur().getTotalisateur() < vehicule2.getCompteur().getTotalisateur()) {
-					return -1;
-				} else if (vehicule1.getCompteur().getTotalisateur() > vehicule2.getCompteur().getTotalisateur()) {
-					return 1;
-				} else {
-					return 0;
-				}
-			}
-		});
+		Collections.sort(getVehicules(), new CompteurComparator());
 	}
 
 }

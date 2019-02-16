@@ -1,9 +1,14 @@
 package automobile;
 
+interface VehiculeComparator {
+	abstract public void triNoImmatriculion();
+
+	abstract public void triCompteur();
+}
+
 public class Vehicule implements Comparable<Vehicule> {
 
 	private static int registre = 0;
-
 	private int noImmatriculation;
 	private Compteur compteur;
 	private double capacite;
@@ -12,7 +17,7 @@ public class Vehicule implements Comparable<Vehicule> {
 
 	private Vehicule() {
 		setRegistre(getRegistre() + 1);
-		setNoImmatriculation(getRegistre());
+		setNoImmatriculation(getRegistre() - 1);
 		compteur = new Compteur();
 		setCapacite(50);
 	}
@@ -67,7 +72,7 @@ public class Vehicule implements Comparable<Vehicule> {
 	}
 
 	public void mettreDeLessence(double carburant) throws CapaciteDepasseeException {
-		if ((this.getJauge() + carburant) > this.getCapacite()) {
+		if ((getJauge() + carburant) > getCapacite()) {
 			throw new CapaciteDepasseeException(carburant);
 		} else {
 			setJauge(getJauge() + carburant);

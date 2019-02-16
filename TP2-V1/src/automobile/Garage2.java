@@ -3,20 +3,20 @@ package automobile;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 
-public class Garage2 implements Collection<Vehicule> {
+public class Garage2 implements Collection<Vehicule>, VehiculeComparator {
 
 	Set<Vehicule> vehicules;
-	
 	CompteurComparator compteurComparator;
 
 	public Garage2() {
 		vehicules = new TreeSet<Vehicule>();
-//		setCompteurComparator();
+		if (getCompteurComparator() == null) {
+			setCompteurComparator(new CompteurComparator());
+		}
 	}
-	
+
 	public Garage2(CompteurComparator compteurComparator) {
 		this();
 		setCompteurComparator(compteurComparator);
@@ -24,6 +24,10 @@ public class Garage2 implements Collection<Vehicule> {
 
 	private Set<Vehicule> getVehicules() {
 		return vehicules;
+	}
+
+	private CompteurComparator getCompteurComparator() {
+		return compteurComparator;
 	}
 
 	private void setCompteurComparator(CompteurComparator compteurComparator) {
@@ -105,25 +109,33 @@ public class Garage2 implements Collection<Vehicule> {
 	}
 
 	public void resetPartielAll() {
-		for (Vehicule vehicule : this.getVehicules()) {
+		for (Vehicule vehicule : getVehicules()) {
 			vehicule.getCompteur().resetPartiel();
 		}
 	}
 
 	public void faireLePleinAll() {
-		for (Vehicule vehicule : this.getVehicules()) {
-			vehicule.faireLePlein();
+		for (Vehicule vehicule : getVehicules()) {
+			if (vehicule.getJauge() < 10.0) {
+				vehicule.faireLePlein();
+			}
 		}
 	}
 
+	@Override
 	public void triNoImmatriculion() {
-		Collections.sort(vehicules, CompteurComparator.AA);
+		TreeSet<Vehicule> treeSet = new TreeSet<Vehicule>();
+		treeSet.addAll(getVehicules());
+		vehicules = treeSet;
+		System.out.println("V¨¦hicules d¨¦j¨¤ tri¨¦s par ordre d'immatriculation");
 	}
 
+	@Override
 	public void triCompteur() {
-	}
-	
-	public void triStatiqueCompteur() {
+		TreeSet<Vehicule> treeSet = new TreeSet<Vehicule>(compteurComparator);
+		treeSet.addAll(getVehicules());
+		vehicules = treeSet;
+		System.out.println("V¨¦hicules d¨¦j¨¤ tri¨¦s par ordre de compteur");
 	}
 
 }

@@ -18,7 +18,7 @@ public class UtilisationVer1 {
 		UtilisationVer1.testGarage2();
 		System.out.println("\n\n######## TESTS DU GARAGE Collection: Set CompteurComparator########");
 		UtilisationVer1.testGarage2Bis();
-		
+
 		System.out.println("\n\n######## TESTS DU GARAGE Collection: Set Mappings ########");
 		UtilisationVer1.testMappings2();
 	}
@@ -42,23 +42,23 @@ public class UtilisationVer1 {
 		System.out.println(vehicule1);
 
 		double distanceParcourue = vehicule1.rouler(100);
-		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru " + 
-				((int)( distanceParcourue* 100.0)) / 100.0 + "kms");
+		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru "
+				+ ((int) (distanceParcourue * 100.0)) / 100.0 + "kms");
 		System.out.println(vehicule1);
 
 		distanceParcourue = vehicule1.rouler(300);
-		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru " + 
-				((int)( distanceParcourue* 100.0)) / 100.0 + "kms");
+		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru "
+				+ ((int) (distanceParcourue * 100.0)) / 100.0 + "kms");
 		System.out.println(vehicule1);
 
 		distanceParcourue = vehicule1.rouler(700);
-		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru " + 
-				((int)( distanceParcourue* 100.0)) / 100.0 + "kms");
+		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru "
+				+ ((int) (distanceParcourue * 100.0)) / 100.0 + "kms");
 		System.out.println(vehicule1);
 
 		distanceParcourue = vehicule1.rouler(200);
-		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru " + 
-				((int)( distanceParcourue* 100.0)) / 100.0 + "kms");
+		System.out.println("Le vehicule " + vehicule1.getNoImmatriculation() + " a parcouru "
+				+ ((int) (distanceParcourue * 100.0)) / 100.0 + "kms");
 		System.out.println(vehicule1);
 
 		vehicule1.rouler(540);
@@ -82,7 +82,6 @@ public class UtilisationVer1 {
 		}
 		System.out.println(vehicule1);
 
-
 		System.out.println(vehicule2);
 		System.out.println(vehicule1.compareTo(vehicule1));
 		System.out.println(vehicule1.compareTo(vehicule2));
@@ -99,13 +98,13 @@ public class UtilisationVer1 {
 		garage.add(new Vehicule(4.5));
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			vehicule.faireLePlein();
 			vehicule.rouler(Math.random() * 3000);
 		}
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			try {
 				vehicule.mettreDeLessence((int) (Math.random() * 100));
 			} catch (CapaciteDepasseeException e) {
@@ -115,15 +114,14 @@ public class UtilisationVer1 {
 		System.out.println(garage);
 
 		garage.resetPartielAll();
-		System.out.println("\n remise à 0 des compteurs partiels de tous les véhiculess!");
+		System.out.println("\n remise ¨¤ 0 des compteurs partiels de tous les v¨¦hiculess!");
 		System.out.println(garage);
 
 		garage.faireLePleinAll();
-		System.out.println("\n faire le plein de tous les véhicules s'il reste moins de 10 litres !");
+		System.out.println("\n faire le plein de tous les v¨¦hicules s'il reste moins de 10 litres !");
 		System.out.println(garage);
 	}
 
-	
 	public static void testMappings2() {
 		Garage2 garage = new Garage2();
 
@@ -134,13 +132,13 @@ public class UtilisationVer1 {
 		garage.add(new Vehicule(4.5));
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			vehicule.faireLePlein();
 			vehicule.rouler(Math.random() * 3000);
 		}
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			try {
 				vehicule.mettreDeLessence((int) (Math.random() * 100));
 			} catch (CapaciteDepasseeException e) {
@@ -150,11 +148,11 @@ public class UtilisationVer1 {
 		System.out.println(garage);
 
 		garage.resetPartielAll();
-		System.out.println("\n remise à 0 des compteurs partiels de tous les véhiculess!");
+		System.out.println("\n remise ¨¤ 0 des compteurs partiels de tous les v¨¦hiculess!");
 		System.out.println(garage);
 
 		garage.faireLePleinAll();
-		System.out.println("\n faire le plein de tous les véhicules s'il reste moins de 10 litres !");
+		System.out.println("\n faire le plein de tous les v¨¦hicules s'il reste moins de 10 litres !");
 		System.out.println(garage);
 	}
 
@@ -168,13 +166,13 @@ public class UtilisationVer1 {
 		garage.add(new Vehicule(4.5));
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			vehicule.faireLePlein();
 			vehicule.rouler(Math.random() * 1000);
 		}
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			try {
 				vehicule.mettreDeLessence((int) (Math.random() * 100));
 			} catch (CapaciteDepasseeException e) {
@@ -197,14 +195,13 @@ public class UtilisationVer1 {
 		garage.add(new Vehicule(4.5));
 		System.out.println(garage);
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			vehicule.faireLePlein();
 			vehicule.rouler(Math.random() * 1000);
 		}
 		System.out.println(garage);
 
-
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			try {
 				vehicule.mettreDeLessence((int) (Math.random() * 100));
 			} catch (CapaciteDepasseeException e) {
@@ -217,12 +214,12 @@ public class UtilisationVer1 {
 	}
 
 	/**
-	 * Garage CompteurComparateur
-	 * ATTENTION: il faut d'abord instancier un garage Comparable
-	 * l'on référence ensuite par un garage CompteurComparable
-	 * en effet, les véhicules ayant tous un compteur à 0 lors de leur instanciation ne seraient pas ajoutés 
-	 * à un garage CompteurComparable, car un Set est sans doublon par rapport au critère de comparaison
-	 */ 
+	 * Garage CompteurComparateur ATTENTION: il faut d'abord instancier un garage
+	 * Comparable l'on r¨¦f¨¦rence ensuite par un garage CompteurComparable en effet,
+	 * les v¨¦hicules ayant tous un compteur ¨¤ 0 lors de leur instanciation ne
+	 * seraient pas ajout¨¦s ¨¤ un garage CompteurComparable, car un Set est sans
+	 * doublon par rapport au crit¨¨re de comparaison
+	 */
 	public static void testGarage2Bis() {
 		Garage2 garageTemp = new Garage2();
 
@@ -235,14 +232,13 @@ public class UtilisationVer1 {
 		Garage2 garage = new Garage2(new CompteurComparator());
 		garage = garageTemp;
 
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			vehicule.faireLePlein();
 			vehicule.rouler(Math.random() * 1000);
 		}
 		System.out.println(garage);
 
-
-		for(Vehicule vehicule : garage) {
+		for (Vehicule vehicule : garage) {
 			try {
 				vehicule.mettreDeLessence((int) (Math.random() * 100));
 			} catch (CapaciteDepasseeException e) {
@@ -253,7 +249,6 @@ public class UtilisationVer1 {
 
 		UtilisationVer1.tri2(garage);
 	}
-
 
 	private static void tri1(Garage1 garage) {
 		System.out.println("\n\n##Tri selon le no immatriculation ##");
