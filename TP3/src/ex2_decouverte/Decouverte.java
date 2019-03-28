@@ -1,4 +1,4 @@
-package decouverte;
+package ex2_decouverte;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;

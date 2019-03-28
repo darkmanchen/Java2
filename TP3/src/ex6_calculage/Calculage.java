@@ -1,12 +1,12 @@
-package calculage;
+package ex6_calculage;
 
 import java.util.Calendar;
 
+//---Singleton---
 public class Calculage {
-	public Calculage() {	
-	}
+	private Calculage() {}
 	
-	public int calculAge(int annee) {
+	public static int calculAge(int annee) {
 		return Calendar.getInstance().get(Calendar.YEAR) - annee;
 	}
 	

@@ -1,4 +1,4 @@
-package button_event;
+package ex3_button_event;
 
 import java.awt.EventQueue;
 

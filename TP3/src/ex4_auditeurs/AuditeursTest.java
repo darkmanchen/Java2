@@ -1,4 +1,4 @@
-package auditeurs;
+package ex4_auditeurs;
 
 import java.awt.EventQueue;
 

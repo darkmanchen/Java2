@@ -1,4 +1,4 @@
-package simple_frame;
+package ex1_simple_frame;
 
 import java.awt.BorderLayout;
 

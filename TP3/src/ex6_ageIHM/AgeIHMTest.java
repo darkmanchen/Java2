@@ -1,14 +1,14 @@
-package decouverte;
+package ex6_ageIHM;
 
 import java.awt.EventQueue;
 
-public class DecouverteTest {
+public class AgeIHMTest {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Decouverte frame = new Decouverte();
+					AgeIHM frame = new AgeIHM();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

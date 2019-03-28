@@ -1,4 +1,4 @@
-package button_event_bis;
+package ex3b_button_event_bis;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

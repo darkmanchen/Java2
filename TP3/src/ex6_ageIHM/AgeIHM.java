@@ -1,10 +1,10 @@
-package ageIHM;
+package ex6_ageIHM;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import calculage.Calculage;
+import ex6_calculage.Calculage;
 
 import java.awt.GridLayout;
 import java.awt.Color;
@@ -103,7 +103,7 @@ public class AgeIHM extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!textFieldNaissance.getText().isEmpty() && textFieldNaissance.getText().matches("[0-9]*")) {
 					textFieldAge.setText("En " + Calendar.getInstance().get(Calendar.YEAR) + " vous avez "
-							+ new Calculage().calculAge(Integer.parseInt(textFieldNaissance.getText())) + " ans.");
+							+ Calculage.calculAge(Integer.parseInt(textFieldNaissance.getText())) + " ans.");
 				} else {
 					textFieldAge.setText("Votre ann¨¦e de naissance ?");
 				}

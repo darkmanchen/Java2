@@ -1,14 +1,14 @@
-package simple_frame;
+package ex3b_button_event_bis;
 
 import java.awt.EventQueue;
 
-public class SimpleFrameTest {
+public class ButtonEventBisTest {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SimpleFrame frame = new SimpleFrame();
+					ButtonEventBisView frame = new ButtonEventBisView("ButtonEvent");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

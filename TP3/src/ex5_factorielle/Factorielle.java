@@ -1,4 +1,4 @@
-package factorielle;
+package ex5_factorielle;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
