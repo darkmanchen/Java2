@@ -6,6 +6,7 @@ package notesElevesProfesseurs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,10 +32,6 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	public List<Eleve> getEleves() {
 		return eleves;
 	}
-	
-
-
-
 
 	@Override
 	public boolean add(Eleve e) {
@@ -114,18 +111,45 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	}
 
 	@Override
-	public void classerParMoyenne() {
-		Collections.sort(getEleves());
+	public void classerParMoyenneDesNotes() {
+		Collections.sort(getEleves(), new Comparator<Eleve>() {
+			@Override
+			public int compare(Eleve eleve1, Eleve eleve2) {
+				if (eleve1.moyenne()<eleve2.moyenne()) {
+					return -1;
+				} else if (eleve1.moyenne()>eleve2.moyenne()) {
+					return 1;
+				} else {
+					return eleve1.compareTo(eleve2);
+				}
+			}
+		});
 	}
 
 	@Override
-	public void classerParMediane() {
-		Collections.sort(getEleves());	
+	public void classerParMedianeDesNotes() {
+		Collections.sort(getEleves(), new Comparator<Eleve>() {
+			@Override
+			public int compare(Eleve eleve1, Eleve eleve2) {
+				if (eleve1.mediane()<eleve2.mediane()) {
+					return -1;
+				} else if (eleve1.mediane()>eleve2.mediane()) {
+					return 1;
+				} else {
+					return eleve1.compareTo(eleve2);
+				}
+			}
+		});	
 	}
 
 	@Override
 	public void classerParMatiere() {
-		Collections.sort(getEleves());	
+		Collections.sort(getEleves(), new Comparator<Eleve>() {
+			@Override
+			public int compare(Eleve eleve1, Eleve eleve2) {
+				return eleve1.compareTo(eleve2);	//need to be fixed.
+			}
+		});	
 	}
 
 }

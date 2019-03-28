@@ -4,6 +4,7 @@
 package notesElevesProfesseurs;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -11,18 +12,20 @@ import java.util.Date;
  *
  */
 interface EleveComparator {
-	public abstract void classerParMoyenne();
-	public abstract void classerParMediane();
+	public abstract void classerParMoyenneDesNotes();
+
+	public abstract void classerParMedianeDesNotes();
+
 	public abstract void classerParMatiere();
 }
 
 public class Eleve extends Personnes implements Comparable<Eleve> {
-	
+
 	private long numeroID;
 	private Date naissance;
 	private ArrayList<Evaluation> evaluations;
 	private Promotion promotion;
-	
+
 	/**
 	 * 
 	 */
@@ -39,7 +42,7 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	 */
 	public Eleve(String prenom, String nom, long numeroID, Date naissance, Promotion promotion) {
 		this();
-		this.setNom(nom);;
+		this.setNom(nom);
 		this.setPrenom(prenom);
 		this.setNumeroID(numeroID);
 		this.setNaissance(naissance);
@@ -87,7 +90,7 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	public void setEvaluations(ArrayList<Evaluation> evaluations) {
 		this.evaluations = evaluations;
 	}
-	
+
 	/**
 	 * @return the promotion
 	 */
@@ -108,7 +111,7 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	public void tousLesNotes() {
 		getEvaluations();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -120,17 +123,38 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 		moyenne /= evaluations.size();
 		return moyenne;
 	}
-	
+
 	/**
 	 * 
 	 */
-	public void mediane() {
-		getEvaluations();
+	public int mediane() {
+		Collections.sort(getEvaluations());
+		if (getEvaluations().size() % 1 == 1) {
+			return getEvaluations().get(getEvaluations().size() / 2 + 1).getNote();
+		} else {
+			return (getEvaluations().get(getEvaluations().size() / 2).getNote()
+					+ getEvaluations().get(getEvaluations().size() / 2 + 1).getNote()) / 2;
+		}
 	}
 
 	@Override
 	public int compareTo(Eleve eleve) {
-		return 0;
+		if (this.getNumeroID()<eleve.getNumeroID()) {
+			return -1;
+		} else if (this.getNumeroID()>eleve.getNumeroID()) {
+			return 1;
+		} else {
+			return 0;	
+		}
 	}
+
+	/* 
+	 * 
+	 */
+	@Override
+	public String toString() {
+		return "("+getPrenom()+", "+getNom()+")";
+	}
+
 	
 }
