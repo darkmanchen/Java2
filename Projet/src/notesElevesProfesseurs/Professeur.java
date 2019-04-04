@@ -10,49 +10,52 @@ package notesElevesProfesseurs;
 public class Professeur extends Personnes {
 
 	/**
-	 * 
-	 */
-	public Professeur() {
-		
-	}
-
-	/**
 	 * @param prenom
 	 * @param nom
 	 */
 	public Professeur(String prenom, String nom) {
-		this();
 		this.setPrenom(prenom);
 		this.setNom(nom);
 	}
-	
+
 	/**
 	 * @param promotion
 	 * @param numeroID
 	 */
-	public Eleve rechercherEleveParID(Promotion promotion, long numeroID) {
-		for (Eleve eleve : promotion) {
+	public Eleve rechercher(Promotion promotion, int numeroID) {
+		for (Eleve eleve : promotion.getEleves()) {
 			if (eleve.getNumeroID() == numeroID) {
 				return eleve;
 			}
 		}
 		return null;
 	}
-	
+
 	/**
-	 * @param eleve
-	 * @param matiereConcernee
+	 * @param promotion
+	 * @param numeroID
 	 * @param note
-	 * @return
+	 * @param i index of the MatiereConcernee
+	 * @throws IllegalStateException
 	 */
-	public boolean modifierNotes(Eleve eleve, String matiereConcernee, int note) {
-		for (Evaluation evaluation : eleve.getEvaluations()) {
-			if (evaluation.getMatiereConcernee() == matiereConcernee) {
-				evaluation.setNote(note);
-				return true;
+	public void setNote(Promotion promotion, int numeroID, float note, int i) throws IllegalStateException {
+		Eleve eleve = null;
+		for (Eleve elv : promotion.getEleves()) {
+			if (elv.getNumeroID() == numeroID) {
+				eleve = elv;
 			}
 		}
-		return false;
+		if (eleve == null) {
+			throw new IllegalStateException();
+		} else {
+			for (Evaluation evaluation : eleve.getEvaluations()) {
+				if (evaluation.getMatiereConcernee() == i) {
+					evaluation.setNote(note);
+					return;
+				}
+			}
+			eleve.getEvaluations().add(new Evaluation(i, note, eleve, this));
+		}
 	}
-	
+
 }

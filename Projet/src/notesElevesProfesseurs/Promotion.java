@@ -15,16 +15,31 @@ import java.util.List;
  *
  */
 public class Promotion implements Collection<Eleve>, EleveComparator {
-	
+
+	String promotionNom;
 	List<Eleve> eleves;
-	
+
 	/**
 	 * 
 	 */
-	public Promotion() {
+	public Promotion(String promotionNom) {
+		this.promotionNom = promotionNom;
 		eleves = new ArrayList<Eleve>();
 	}
-	
+
+	/**
+	 * @return the nom
+	 */
+	public String getPromotionNom() {
+		return promotionNom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setPromotionNom(String nom) {
+		this.promotionNom = nom;
+	}
 
 	/**
 	 * @return the eleves
@@ -34,112 +49,144 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	}
 
 	@Override
-	public boolean add(Eleve e) {
-		
-		return false;
+	public boolean add(Eleve eleve) {
+		eleves.add(eleve);
+		return true;
 	}
 
 	@Override
 	public boolean addAll(Collection<? extends Eleve> c) {
-		
+
 		return false;
 	}
 
 	@Override
 	public void clear() {
-				
+
 	}
 
 	@Override
 	public boolean contains(Object o) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean containsAll(Collection<?> c) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		
+
 		return false;
 	}
 
 	@Override
 	public Iterator<Eleve> iterator() {
-		
+
 		return null;
 	}
 
 	@Override
 	public boolean remove(Object o) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		
+
 		return false;
 	}
 
 	@Override
 	public int size() {
-		
+
 		return 0;
 	}
 
 	@Override
 	public Object[] toArray() {
-		
+
 		return null;
 	}
 
 	@Override
 	public <T> T[] toArray(T[] a) {
-		
+
 		return null;
 	}
 
 	@Override
-	public void classerParMoyenneDesNotes() {
-		Collections.sort(getEleves(), new Comparator<Eleve>() {
-			@Override
-			public int compare(Eleve eleve1, Eleve eleve2) {
-				if (eleve1.moyenne()<eleve2.moyenne()) {
-					return -1;
-				} else if (eleve1.moyenne()>eleve2.moyenne()) {
-					return 1;
-				} else {
-					return eleve1.compareTo(eleve2);
+	public void classerParMoyenneDesNotes(String ordre) {
+		if (ordre == "croissant") {
+			Collections.sort(getEleves(), new Comparator<Eleve>() {
+				@Override
+				public int compare(Eleve eleve1, Eleve eleve2) {
+					if (eleve1.moyenne() < eleve2.moyenne()) {
+						return -1;
+					} else if (eleve1.moyenne() > eleve2.moyenne()) {
+						return 1;
+					} else {
+						return eleve1.compareTo(eleve2);
+					}
 				}
-			}
-		});
+			});
+		} else if (ordre == "decroissant") {
+			Collections.sort(getEleves(), new Comparator<Eleve>() {
+				@Override
+				public int compare(Eleve eleve1, Eleve eleve2) {
+					if (eleve1.moyenne() > eleve2.moyenne()) {
+						return -1;
+					} else if (eleve1.moyenne() < eleve2.moyenne()) {
+						return 1;
+					} else {
+						return eleve1.compareTo(eleve2);
+					}
+				}
+			});
+		} else {
+		}
 	}
 
 	@Override
-	public void classerParMedianeDesNotes() {
-		Collections.sort(getEleves(), new Comparator<Eleve>() {
-			@Override
-			public int compare(Eleve eleve1, Eleve eleve2) {
-				if (eleve1.mediane()<eleve2.mediane()) {
-					return -1;
-				} else if (eleve1.mediane()>eleve2.mediane()) {
-					return 1;
-				} else {
-					return eleve1.compareTo(eleve2);
+	public void classerParMedianeDesNotes(String ordre) {
+		if (ordre == "croissant") {
+			Collections.sort(getEleves(), new Comparator<Eleve>() {
+				@Override
+				public int compare(Eleve eleve1, Eleve eleve2) {
+					if (eleve1.mediane() < eleve2.mediane()) {
+						return -1;
+					} else if (eleve1.mediane() > eleve2.mediane()) {
+						return 1;
+					} else {
+						return eleve1.compareTo(eleve2);
+					}
 				}
-			}
-		});	
+			});
+		} else if (ordre == "decroissant") {
+			Collections.sort(getEleves(), new Comparator<Eleve>() {
+				@Override
+				public int compare(Eleve eleve1, Eleve eleve2) {
+					if (eleve1.mediane() > eleve2.mediane()) {
+						return -1;
+					} else if (eleve1.mediane() < eleve2.mediane()) {
+						return 1;
+					} else {
+						return eleve1.compareTo(eleve2);
+					}
+				}
+			});
+		} else {
+		}
 	}
 
 	@Override
@@ -147,9 +194,32 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 		Collections.sort(getEleves(), new Comparator<Eleve>() {
 			@Override
 			public int compare(Eleve eleve1, Eleve eleve2) {
-				return eleve1.compareTo(eleve2);	//need to be fixed.
+				return eleve1.compareTo(eleve2); // need to be fixed.
 			}
-		});	
+		});
+	}
+
+	public Eleve rechercher(int numeroID) {
+		for (Eleve eleve : getEleves()) {
+			if (eleve.getNumeroID() == numeroID) {
+				return eleve;
+			}
+		}
+		return null;
+	}
+
+	/* 
+	 * 
+	 */
+	@Override
+	public String toString() {
+		String result = "Promotion : " + getPromotionNom() + "\n";
+		result += "NumeroID\tPrenom\tNom\tMediane\tMoyenne\n";
+		for (Eleve eleve : eleves) {
+			result += eleve.getNumeroID() + "\t\t" + eleve.getPrenom() + "\t" + eleve.getNom() + "\t" + eleve.mediane()
+					+ "\t" + eleve.moyenne() + "\n";
+		}
+		return result;
 	}
 
 }

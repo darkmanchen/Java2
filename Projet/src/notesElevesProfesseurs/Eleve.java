@@ -5,76 +5,107 @@ package notesElevesProfesseurs;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author MO Fei
  *
  */
 interface EleveComparator {
-	public abstract void classerParMoyenneDesNotes();
+	public abstract void classerParMoyenneDesNotes(String ordre);
 
-	public abstract void classerParMedianeDesNotes();
+	public abstract void classerParMedianeDesNotes(String ordre);
 
 	public abstract void classerParMatiere();
 }
 
 public class Eleve extends Personnes implements Comparable<Eleve> {
 
-	private long numeroID;
-	private Date naissance;
+	public class Naissance {
+		public static final int NB_EVALUATIONS = 10;
+
+		private int jour;
+		private int mois;
+		private int annee;
+
+		/**
+		 * @param jour
+		 * @param mois
+		 * @param annee
+		 */
+		public Naissance(int jour, int mois, int annee) {
+			super();
+			this.jour = jour;
+			this.mois = mois;
+			this.annee = annee;
+		}
+
+		/**
+		 * @return the jour
+		 */
+		public int getJour() {
+			return jour;
+		}
+
+		/**
+		 * @return the mois
+		 */
+		public int getMois() {
+			return mois;
+		}
+
+		/**
+		 * @return the annee
+		 */
+		public int getAnnee() {
+			return annee;
+		}
+
+		/* 
+		 * 
+		 */
+		@Override
+		public String toString() {
+			return "Naissance [jour=" + jour + ", mois=" + mois + ", annee=" + annee + "]";
+		}
+
+	}
+
+	private static int nombreTotal;
+	private final int numeroID;
+	private Naissance naissance;
 	private ArrayList<Evaluation> evaluations;
 	private Promotion promotion;
 
 	/**
-	 * 
-	 */
-	private Eleve() {
-		evaluations = new ArrayList<Evaluation>();
-	}
-
-	/**
-	 * @param prenom
 	 * @param nom
-	 * @param numeroID
-	 * @param naissance
-	 * @param promotion
+	 * @param prenom
+	 * @param jour
+	 * @param mois
+	 * @param annee
 	 */
-	public Eleve(String prenom, String nom, long numeroID, Date naissance, Promotion promotion) {
-		this();
+	public Eleve(String nom, String prenom, int jour, int mois, int annee) {
 		this.setNom(nom);
 		this.setPrenom(prenom);
-		this.setNumeroID(numeroID);
-		this.setNaissance(naissance);
-		this.setPromotion(promotion);
+		this.naissance = new Naissance(jour, mois, annee);
+		evaluations = new ArrayList<Evaluation>();
+		numeroID = nombreTotal;
+		nombreTotal += 1;
 	}
 
 	/**
 	 * @return the numeroID
 	 */
-	public long getNumeroID() {
+	public int getNumeroID() {
 		return numeroID;
-	}
-
-	/**
-	 * @param numeroID the numeroID to set
-	 */
-	public void setNumeroID(long numeroID) {
-		this.numeroID = numeroID;
 	}
 
 	/**
 	 * @return the naissance
 	 */
-	public Date getNaissance() {
+	public Naissance getNaissance() {
 		return naissance;
-	}
-
-	/**
-	 * @param naissance the naissance to set
-	 */
-	public void setNaissance(Date naissance) {
-		this.naissance = naissance;
 	}
 
 	/**
@@ -103,6 +134,7 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	 */
 	public void setPromotion(Promotion promotion) {
 		this.promotion = promotion;
+		promotion.add(this);
 	}
 
 	/**
@@ -115,8 +147,11 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	/**
 	 * 
 	 */
-	public int moyenne() {
+	public int moyenne() throws IllegalStateException {
 		int moyenne = 0;
+		if (getEvaluations().isEmpty()) {
+			throw new IllegalStateException();
+		}
 		for (Evaluation evaluation : getEvaluations()) {
 			moyenne += evaluation.getNote();
 		}
@@ -127,24 +162,37 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	/**
 	 * 
 	 */
-	public int mediane() {
+	public float mediane() throws IllegalStateException {
 		Collections.sort(getEvaluations());
+		if (getEvaluations().isEmpty()) {
+			throw new IllegalStateException();
+		}
 		if (getEvaluations().size() % 1 == 1) {
 			return getEvaluations().get(getEvaluations().size() / 2 + 1).getNote();
 		} else {
-			return (getEvaluations().get(getEvaluations().size() / 2).getNote()
-					+ getEvaluations().get(getEvaluations().size() / 2 + 1).getNote()) / 2;
+			return (float) (getEvaluations().get(getEvaluations().size() / 2).getNote()
+					+ getEvaluations().get(getEvaluations().size() / 2 + 1).getNote()) / 2.0f;
 		}
+	}
+
+	public Set<Professeur> getCorrecteurs() {
+		HashSet<Professeur> correcteurs = new HashSet<Professeur>();
+		for (Evaluation evaluation : getEvaluations()) {
+			if (!correcteurs.contains(evaluation.getCorrecteur())) {
+				correcteurs.add(evaluation.getCorrecteur());
+			}
+		}
+		return correcteurs;
 	}
 
 	@Override
 	public int compareTo(Eleve eleve) {
-		if (this.getNumeroID()<eleve.getNumeroID()) {
+		if (this.getNumeroID() < eleve.getNumeroID()) {
 			return -1;
-		} else if (this.getNumeroID()>eleve.getNumeroID()) {
+		} else if (this.getNumeroID() > eleve.getNumeroID()) {
 			return 1;
 		} else {
-			return 0;	
+			return 0;
 		}
 	}
 
@@ -153,8 +201,36 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	 */
 	@Override
 	public String toString() {
-		return "("+getPrenom()+", "+getNom()+")";
+		String information = super.toString() + " id: " + getNumeroID() + "\npromotion: "
+				+ getPromotion().getPromotionNom() + "\nnotes: ";
+		for (Evaluation evaluation : getEvaluations()) {
+			information += "\nMatiereConcernee: " + evaluation.getMatiereConcernee() + "\tnote: "
+					+ evaluation.getNote();
+
+		}
+		information += "\nmoyenne = " + moyenne() + "\nmediane = " + mediane() + "\ncorrecteur(s): " + getCorrecteurs()
+				+ "\n";
+		return information;
 	}
 
-	
+	/* 
+	 * 
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (getNumeroID() == ((Eleve) obj).getNumeroID()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/* 
+	 * 
+	 */
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
 }

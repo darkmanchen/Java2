@@ -39,5 +39,13 @@ public abstract class Personnes {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
+	/* 
+	 * 
+	 */
+	@Override
+	public String toString() {
+		return "(" + getPrenom() + ", " + getNom() + ")";
+	}
 	
 }
