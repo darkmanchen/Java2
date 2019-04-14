@@ -13,9 +13,10 @@ import java.util.Set;
  *
  */
 interface EleveComparator {
-	public abstract void classerParMoyenneDesNotes(String ordre);
 
-	public abstract void classerParMedianeDesNotes(String ordre);
+	public abstract void classerParMoyenneDesNotes(Ordre ordre);
+
+	public abstract void classerParMedianeDesNotes(Ordre ordre);
 
 	public abstract void classerParMatiere();
 }
@@ -85,9 +86,9 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	 * @param mois
 	 * @param annee
 	 */
-	public Eleve(String nom, String prenom, int jour, int mois, int annee) {
-		this.setNom(nom);
+	public Eleve(String prenom, String nom, int jour, int mois, int annee) {
 		this.setPrenom(prenom);
+		this.setNom(nom);
 		this.naissance = new Naissance(jour, mois, annee);
 		evaluations = new ArrayList<Evaluation>();
 		numeroID = nombreTotal;
@@ -134,7 +135,6 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 	 */
 	public void setPromotion(Promotion promotion) {
 		this.promotion = promotion;
-		promotion.add(this);
 	}
 
 	/**

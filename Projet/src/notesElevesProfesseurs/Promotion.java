@@ -51,6 +51,7 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	@Override
 	public boolean add(Eleve eleve) {
 		eleves.add(eleve);
+		eleve.setPromotion(this);
 		return true;
 	}
 
@@ -126,8 +127,8 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	}
 
 	@Override
-	public void classerParMoyenneDesNotes(String ordre) {
-		if (ordre == "croissant") {
+	public void classerParMoyenneDesNotes(Ordre ordre) {
+		if (ordre == Ordre.croissant) {
 			Collections.sort(getEleves(), new Comparator<Eleve>() {
 				@Override
 				public int compare(Eleve eleve1, Eleve eleve2) {
@@ -140,7 +141,7 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 					}
 				}
 			});
-		} else if (ordre == "decroissant") {
+		} else if (ordre == Ordre.decroissant) {
 			Collections.sort(getEleves(), new Comparator<Eleve>() {
 				@Override
 				public int compare(Eleve eleve1, Eleve eleve2) {
@@ -158,8 +159,8 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	}
 
 	@Override
-	public void classerParMedianeDesNotes(String ordre) {
-		if (ordre == "croissant") {
+	public void classerParMedianeDesNotes(Ordre ordre) {
+		if (ordre == Ordre.croissant) {
 			Collections.sort(getEleves(), new Comparator<Eleve>() {
 				@Override
 				public int compare(Eleve eleve1, Eleve eleve2) {
@@ -172,7 +173,7 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 					}
 				}
 			});
-		} else if (ordre == "decroissant") {
+		} else if (ordre == Ordre.decroissant) {
 			Collections.sort(getEleves(), new Comparator<Eleve>() {
 				@Override
 				public int compare(Eleve eleve1, Eleve eleve2) {
@@ -216,8 +217,11 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 		String result = "Promotion : " + getPromotionNom() + "\n";
 		result += "NumeroID\tPrenom\tNom\tMediane\tMoyenne\n";
 		for (Eleve eleve : eleves) {
-			result += eleve.getNumeroID() + "\t\t" + eleve.getPrenom() + "\t" + eleve.getNom() + "\t" + eleve.mediane()
-					+ "\t" + eleve.moyenne() + "\n";
+			result += eleve.getNumeroID() + "\t\t" + 
+						eleve.getNom() + "\t" + 
+						eleve.getPrenom() + "\t" + 
+						eleve.mediane() + "\t" + 
+						eleve.moyenne() + "\n";
 		}
 		return result;
 	}
