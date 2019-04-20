@@ -15,7 +15,7 @@ import notesElevesProfesseurs.Promotion;
  */
 public class DataLoading {
 	
-	public static ArrayList<Eleve> loadingEleve(String filePath) {
+	public static ArrayList<Eleve> loadEleve(String filePath) {
 		ArrayList<Eleve> eleves = new ArrayList<Eleve>();
 		ArrayList<ArrayList<String>> elevesInfo = CSVIO.read(filePath);
 		for (ArrayList<String> eleveInfo : elevesInfo) {
@@ -26,7 +26,7 @@ public class DataLoading {
 		return eleves;
 	}
 
-	public static Promotion loadingPromotion(String filePath, ArrayList<Eleve> eleves) {
+	public static Promotion loadPromotion(String filePath, ArrayList<Eleve> eleves) {
 		Promotion promotion = new Promotion(filePath.substring(8, filePath.lastIndexOf('.')));
 		ArrayList<ArrayList<String>> ids = CSVIO.read(filePath);
 		for (ArrayList<String> id : ids) {
@@ -39,7 +39,7 @@ public class DataLoading {
 		return promotion;
 	}
 
-	public static ArrayList<Professeur> loadingProfesseurs(String filePath) {
+	public static ArrayList<Professeur> loadProfesseurs(String filePath) {
 		ArrayList<Professeur> professeurs = new ArrayList<Professeur>();
 		ArrayList<ArrayList<String>> professeursInfo = CSVIO.read(filePath);
 		for (ArrayList<String> professeurInfo : professeursInfo) {
@@ -49,7 +49,7 @@ public class DataLoading {
 		return professeurs;
 	}
 
-	public static void loadingNotes(String filePath, ArrayList<Promotion> promotions,
+	public static void loadNotes(String filePath, ArrayList<Promotion> promotions,
 			ArrayList<Professeur> professeurs) {
 		ArrayList<ArrayList<String>> notesInfo = CSVIO.read(filePath);
 		for (ArrayList<String> noteInfo : notesInfo) {

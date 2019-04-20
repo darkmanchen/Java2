@@ -22,7 +22,6 @@
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
 <fullyQualifiedTypeName name="notesElevesProfesseurs.EleveComparator"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
@@ -33,7 +32,6 @@
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="notesElevesProfesseurs.Eleve.Naissance"/>
 <fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
-<fullyQualifiedTypeName name="notesElevesProfesseurs.Evaluation"/>
 <fullyQualifiedTypeName name="test.Test.MatiereConcernee"/>
 <fullyQualifiedTypeName name="java.lang.Enum"/>
 <fullyQualifiedTypeName name="notesElevesProfesseurs.Promotion.Ordre"/>
@@ -41,14 +39,18 @@
 <fullyQualifiedTypeName name="notesElevesProfesseurs.Ordre"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="test.CSVreading"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.lang.Float"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="utils.CSVIO"/>
-<fullyQualifiedTypeName name="notesElevesProfesseurs.Eleve"/>
-<fullyQualifiedTypeName name="notesElevesProfesseurs.Promotion"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="notesElevesProfesseurs.Professeur"/>
+<fullyQualifiedTypeName name="utils.CSVIO"/>
+<fullyQualifiedTypeName name="notesElevesProfesseurs.Promotion"/>
+<fullyQualifiedTypeName name="notesElevesProfesseurs.Eleve"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="notesElevesProfesseurs.Evaluation"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.Float"/>
+<fullyQualifiedTypeName name="utils.DataSaving"/>
 <fullyQualifiedTypeName name="utils.DataLoading"/>
 </qualifiedTypeNameHistroy>

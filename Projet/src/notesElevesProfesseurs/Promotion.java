@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * @author MO Fei
@@ -17,7 +16,7 @@ import java.util.List;
 public class Promotion implements Collection<Eleve>, EleveComparator {
 
 	String promotionNom;
-	List<Eleve> eleves;
+	ArrayList<Eleve> eleves;
 
 	/**
 	 * 
@@ -44,7 +43,7 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 	/**
 	 * @return the eleves
 	 */
-	public List<Eleve> getEleves() {
+	public ArrayList<Eleve> getEleves() {
 		return eleves;
 	}
 
