@@ -135,6 +135,7 @@ public class Test3 {
 		dataset.addValue(promo3_matiere4_moyenne, promotions.get(2).getPromotionNom(), "matiere4");
 
 		JFreeChart barChart = ChartFactory.createBarChart("Moyenne", "Matiere", "Note", dataset, PlotOrientation.VERTICAL, true, true, false);
+		
 		File chartFile = new File("res/jpeg/BarChart.jpeg");
 		try {
 			ChartUtilities.saveChartAsJPEG(chartFile, barChart, 800, 600);
