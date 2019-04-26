@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="notesElevesProfesseurs.EleveComparator"/>
-<fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.util.TreeSet"/>
@@ -35,14 +33,11 @@
 <fullyQualifiedTypeName name="org.jfree.chart.ChartUtilities"/>
 <fullyQualifiedTypeName name="java.awt.Label"/>
 <fullyQualifiedTypeName name="java.awt.TextField"/>
-<fullyQualifiedTypeName name="javax.swing.JTextField"/>
 <fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
-<fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
 <fullyQualifiedTypeName name="java.awt.Insets"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="javax.swing.border.Border"/>
 <fullyQualifiedTypeName name="javax.swing.plaf.basic.BasicBorders"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="notesElevesProfesseurs.Professeur"/>
 <fullyQualifiedTypeName name="utils.DataSaving"/>
 <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
@@ -51,13 +46,18 @@
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="javax.swing.UIManager"/>
 <fullyQualifiedTypeName name="java.awt.GridLayout"/>
-<fullyQualifiedTypeName name="ui.AddProfesseurFrame"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="ui.MainFrame"/>
-<fullyQualifiedTypeName name="javax.swing.JButton"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
-<fullyQualifiedTypeName name="utils.Global"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="ui.AddEleveFrame"/>
+<fullyQualifiedTypeName name="ui.AddProfesseurFrame"/>
+<fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="ui.AddNoteFrame"/>
+<fullyQualifiedTypeName name="java.awt.Point"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="utils.Global"/>
 </qualifiedTypeNameHistroy>

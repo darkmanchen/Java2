@@ -1,6 +1,7 @@
 package utils;
 
 import java.awt.Font;
+import java.awt.Point;
 import java.util.ArrayList;
 
 import notesElevesProfesseurs.Eleve;
@@ -11,6 +12,7 @@ public class Global {
 
 	private static Global global = new Global();
 	public static Font font;
+	public static Point location;
 	public static ArrayList<Eleve> eleves;
 	public static ArrayList<Promotion> promotions;
 	public static ArrayList<Professeur> professeurs;

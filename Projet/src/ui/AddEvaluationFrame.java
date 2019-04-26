@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,24 +17,27 @@ import javax.swing.UIManager;
 import utils.Global;
 
 @SuppressWarnings("serial")
-
-public class AddEleveFrame extends JFrame {
+public class AddEvaluationFrame extends JFrame {
 
 	private JPanel contentPane;
 	private GridBagConstraints gridBagConstraints;
 	private JLabel lblTitle;
-	private JLabel lblPrenom;
-	private JTextField txtPrenom;
-	private JLabel lblNom;
-	private JTextField txtNom;
-	private JLabel lblNaissance;
-	private JComboBox<Integer> cmbNaissanceJour;
-	private JComboBox<Integer> cmbNaissanceMois;
-	private JComboBox<Integer> cmbNaissanceAnnee;
+	private JLabel lblPromotion;
+	private JTextField txtPromotion;
+	private JLabel lblEleveNumeroID;
+	private JTextField txtEleveNumeroID;
+	private JLabel lblMatiereConcernee;
+	private JTextField txtMatiereConcernee;
+	private JLabel lblNote;
+	private JTextField txtNote;
+	private JLabel lblProfesseurPrenom;
+	private JTextField txtProfesseurPrenom;
+	private JLabel lblProfesseurNom;
+	private JTextField txtProfesseurNom;
 	private JButton btnCancel;
 	private JButton btnConfirm;
 
-	public AddEleveFrame() {
+	public AddEvaluationFrame() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
@@ -45,12 +47,12 @@ public class AddEleveFrame extends JFrame {
 		setContentPane(contentPane);
 
 		gridBagConstraints = new GridBagConstraints();
-		gridBagConstraints.ipadx = 40;
+		gridBagConstraints.ipadx = 100;
 		gridBagConstraints.ipady = 20;
 		gridBagConstraints.insets = new Insets(20, 20, 20, 20);
 		gridBagConstraints.fill = GridBagConstraints.BOTH;
-
-		lblTitle = new JLabel("Eleve", JLabel.CENTER);
+		
+		lblTitle = new JLabel("Evaluation", JLabel.CENTER);
 		lblTitle.setFont(Global.font);
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 0;
@@ -58,89 +60,112 @@ public class AddEleveFrame extends JFrame {
 		gridBagConstraints.gridheight = 1;
 		contentPane.add(lblTitle, gridBagConstraints);
 
-		lblPrenom = new JLabel("Prenom");
-		lblPrenom.setFont(Global.font);
+		lblPromotion = new JLabel("Promotion");
+		lblPromotion.setFont(Global.font);
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 1;
 		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(lblPrenom, gridBagConstraints);
-
-		txtPrenom = new JTextField();
-		txtPrenom.setFont(Global.font);
+		contentPane.add(lblPromotion, gridBagConstraints);
+		
+		txtPromotion = new JTextField();
+		txtPromotion.setFont(Global.font);
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 1;
-		gridBagConstraints.gridwidth = 3;
+		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(txtPrenom, gridBagConstraints);
+		contentPane.add(txtPromotion, gridBagConstraints);
+		
+		lblEleveNumeroID = new JLabel("EleveNumeroID");
+		lblEleveNumeroID.setFont(Global.font);
+		gridBagConstraints.gridx = 2;
+		gridBagConstraints.gridy = 1;
+		gridBagConstraints.gridwidth = 1;
+		gridBagConstraints.gridheight = 1;
+		contentPane.add(lblEleveNumeroID, gridBagConstraints);
 
-		lblNom = new JLabel("Nom");
-		lblNom.setFont(Global.font);
+		txtEleveNumeroID = new JTextField();
+		txtEleveNumeroID.setFont(Global.font);
+		gridBagConstraints.gridx = 3;
+		gridBagConstraints.gridy = 1;
+		gridBagConstraints.gridwidth = 1;
+		gridBagConstraints.gridheight = 1;
+		contentPane.add(txtEleveNumeroID, gridBagConstraints);
+		
+		lblMatiereConcernee = new JLabel("MatiereConcernee");
+		lblMatiereConcernee.setFont(Global.font);
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 2;
 		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(lblNom, gridBagConstraints);
+		contentPane.add(lblMatiereConcernee, gridBagConstraints);
 
-		txtNom = new JTextField();
-		txtNom.setFont(Global.font);
+		txtMatiereConcernee = new JTextField();
+		txtMatiereConcernee.setFont(Global.font);
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 2;
-		gridBagConstraints.gridwidth = 3;
+		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(txtNom, gridBagConstraints);
+		contentPane.add(txtMatiereConcernee, gridBagConstraints);
+		
+		lblNote = new JLabel("Note");
+		lblNote.setFont(Global.font);
+		gridBagConstraints.gridx = 2;
+		gridBagConstraints.gridy = 2;
+		gridBagConstraints.gridwidth = 1;
+		gridBagConstraints.gridheight = 1;
+		contentPane.add(lblNote, gridBagConstraints);
 
-		lblNaissance = new JLabel("Naissance (jj/mm/aaaa)");
-		lblNaissance.setFont(Global.font);
+		txtNote = new JTextField();
+		txtNote.setFont(Global.font);
+		gridBagConstraints.gridx = 3;
+		gridBagConstraints.gridy = 2;
+		gridBagConstraints.gridwidth = 1;
+		gridBagConstraints.gridheight = 1;
+		contentPane.add(txtNote, gridBagConstraints);
+		
+		lblProfesseurPrenom = new JLabel("ProfesseurPrenom");
+		lblProfesseurPrenom.setFont(Global.font);
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 3;
 		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(lblNaissance, gridBagConstraints);
+		contentPane.add(lblProfesseurPrenom, gridBagConstraints);
 
-		cmbNaissanceJour = new JComboBox<Integer>();
-		for (int i = 1; i <= 31; ++i) {
-			cmbNaissanceJour.addItem(i);
-		}
-		cmbNaissanceJour.setFont(Global.font);
+		txtProfesseurPrenom = new JTextField();
+		txtProfesseurPrenom.setFont(Global.font);
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 3;
 		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(cmbNaissanceJour, gridBagConstraints);
-
-		cmbNaissanceMois = new JComboBox<Integer>();
-		for (int i = 1; i <= 12; ++i) {
-			cmbNaissanceMois.addItem(i);
-		}
-		cmbNaissanceMois.setFont(Global.font);
+		contentPane.add(txtProfesseurPrenom, gridBagConstraints);
+		
+		lblProfesseurNom = new JLabel("ProfesseurNom");
+		lblProfesseurNom.setFont(Global.font);
 		gridBagConstraints.gridx = 2;
 		gridBagConstraints.gridy = 3;
 		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(cmbNaissanceMois, gridBagConstraints);
+		contentPane.add(lblProfesseurNom, gridBagConstraints);
 
-		cmbNaissanceAnnee = new JComboBox<Integer>();
-		for (int i = 2019; i > 1920; --i) {
-			cmbNaissanceAnnee.addItem(i);
-		}
-		cmbNaissanceAnnee.setFont(Global.font);
+		txtProfesseurNom = new JTextField();
+		txtProfesseurNom.setFont(Global.font);
 		gridBagConstraints.gridx = 3;
 		gridBagConstraints.gridy = 3;
 		gridBagConstraints.gridwidth = 1;
 		gridBagConstraints.gridheight = 1;
-		contentPane.add(cmbNaissanceAnnee, gridBagConstraints);
+		contentPane.add(txtProfesseurNom, gridBagConstraints);
 
 		btnCancel = new JButton("Cancel");
 		btnCancel.setFont(Global.font);
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 4;
-		gridBagConstraints.gridwidth = 1;
+		gridBagConstraints.gridwidth = 2;
 		gridBagConstraints.gridheight = 1;
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame(); 
+				MainFrame mainFrame = new MainFrame();
 				mainFrame.setLocation(getLocation());
 				mainFrame.setExtendedState(getExtendedState());
 				mainFrame.setVisible(true);
@@ -151,18 +176,14 @@ public class AddEleveFrame extends JFrame {
 
 		btnConfirm = new JButton("Confirm");
 		btnConfirm.setFont(Global.font);
-		gridBagConstraints.gridx = 1;
+		gridBagConstraints.gridx = 2;
 		gridBagConstraints.gridy = 4;
-		gridBagConstraints.gridwidth = 3;
+		gridBagConstraints.gridwidth = 2;
 		gridBagConstraints.gridheight = 1;
 		btnConfirm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!txtNom.getText().equals(txtNom.getText().toUpperCase())) {
-					txtNom.setText(txtNom.getText().toUpperCase());
-				}
-								
-				MainFrame mainFrame = new MainFrame(); 
+				MainFrame mainFrame = new MainFrame();
 				mainFrame.setLocation(getLocation());
 				mainFrame.setExtendedState(getExtendedState());
 				mainFrame.setVisible(true);
@@ -170,15 +191,8 @@ public class AddEleveFrame extends JFrame {
 				UIManager.put("OptionPane.messageFont", Global.font);
 				UIManager.put("OptionPane.buttonFont", Global.font);
 				JOptionPane.showMessageDialog(contentPane, "Add success!");
-//				String prenom = txtPrenom.getText();
-//				String nom = txtNom.getText();
-//				if (!prenom.equals("") && !nom.equals("")) {
-//					professeurs.add(new Professeur(prenom, nom));
-//					DataSaving.saveProfesseur("res/csv/professeurs.csv", professeurs);
-//				}
 			}
 		});
 		contentPane.add(btnConfirm, gridBagConstraints);
-
 	}
 }
