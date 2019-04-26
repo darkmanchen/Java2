@@ -89,11 +89,6 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 		return null;
 	}
 
-	@Override
-	public boolean remove(Object o) {
-
-		return false;
-	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
@@ -223,6 +218,12 @@ public class Promotion implements Collection<Eleve>, EleveComparator {
 						eleve.moyenne() + "\n";
 		}
 		return result;
+	}
+
+	@Override
+	public boolean remove(Object o) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

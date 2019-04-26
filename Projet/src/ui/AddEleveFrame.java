@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import notesElevesProfesseurs.Eleve;
+import utils.DataSaving;
 import utils.Global;
 
 @SuppressWarnings("serial")
@@ -37,6 +41,19 @@ public class AddEleveFrame extends JFrame {
 
 	public AddEleveFrame() {
 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {		
+				DataSaving.saveEleve("res/csv/eleves.csv", Global.eleves);
+				for (int i = 1; i < 4; ++i) {
+					DataSaving.savePromotion("res/csv/promotion" + i + ".csv", Global.promotions.get(i-1));
+				}
+				DataSaving.saveProfesseur("res/csv/professeurs.csv", Global.professeurs);
+				DataSaving.saveNotes("res/csv/notes.csv", Global.promotions);
+				
+				super.windowClosing(e);
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 
@@ -140,7 +157,7 @@ public class AddEleveFrame extends JFrame {
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mainFrame = new MainFrame(); 
+				MainFrame mainFrame = new MainFrame();
 				mainFrame.setLocation(getLocation());
 				mainFrame.setExtendedState(getExtendedState());
 				mainFrame.setVisible(true);
@@ -161,8 +178,10 @@ public class AddEleveFrame extends JFrame {
 				if (!txtNom.getText().equals(txtNom.getText().toUpperCase())) {
 					txtNom.setText(txtNom.getText().toUpperCase());
 				}
-								
-				MainFrame mainFrame = new MainFrame(); 
+				Eleve eleve = new Eleve(txtPrenom.getText(), txtNom.getText(), (int) cmbNaissanceJour.getSelectedItem(),
+						(int) cmbNaissanceMois.getSelectedItem(), (int) cmbNaissanceAnnee.getSelectedItem());
+				Global.eleves.add(eleve);
+				MainFrame mainFrame = new MainFrame();
 				mainFrame.setLocation(getLocation());
 				mainFrame.setExtendedState(getExtendedState());
 				mainFrame.setVisible(true);

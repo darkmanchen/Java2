@@ -5,11 +5,14 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import utils.DataSaving;
 import utils.Global;
 
 @SuppressWarnings("serial")
@@ -21,9 +24,23 @@ public class MainFrame extends JFrame {
 	private JButton btnAddEleve;
 	private JButton btnAddProfesseur;
 	private JButton btnAddNote;
+	private JButton btnRechercherEleve;
 
 	public MainFrame() {
 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {		
+				DataSaving.saveEleve("res/csv/eleves.csv", Global.eleves);
+				for (int i = 1; i < 4; ++i) {
+					DataSaving.savePromotion("res/csv/promotion" + i + ".csv", Global.promotions.get(i-1));
+				}
+				DataSaving.saveProfesseur("res/csv/professeurs.csv", Global.professeurs);
+				DataSaving.saveNotes("res/csv/notes.csv", Global.promotions);
+				
+				super.windowClosing(e);
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 
@@ -94,6 +111,24 @@ public class MainFrame extends JFrame {
 			}
 		});
 		contentPane.add(btnAddNote, gridBagConstraints);  
+		
+		btnRechercherEleve = new JButton("RechercherEleve");
+		btnRechercherEleve.setFont(Global.font);
+		gridBagConstraints.gridx = 1;
+		gridBagConstraints.gridy = 1;
+		btnRechercherEleve.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				RechercherEleveFrame rechercherEleveFrame = new RechercherEleveFrame();
+				rechercherEleveFrame.setLocation(getLocation());
+				rechercherEleveFrame.setExtendedState(getExtendedState());
+				rechercherEleveFrame.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(btnRechercherEleve, gridBagConstraints);  
 
 	}
 }

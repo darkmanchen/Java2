@@ -24,7 +24,6 @@ interface EleveComparator {
 public class Eleve extends Personnes implements Comparable<Eleve> {
 
 	public class Naissance {
-		public static final int NB_EVALUATIONS = 10;
 
 		private int jour;
 		private int mois;
@@ -72,6 +71,8 @@ public class Eleve extends Personnes implements Comparable<Eleve> {
 		}
 
 	}
+	
+//	public static final int NB_EVALUATIONS = 10;
 
 	private static int nombreTotal;
 	private final int numeroID;

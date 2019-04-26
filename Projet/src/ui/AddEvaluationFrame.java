@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import utils.DataSaving;
 import utils.Global;
 
 @SuppressWarnings("serial")
@@ -39,6 +42,19 @@ public class AddEvaluationFrame extends JFrame {
 
 	public AddEvaluationFrame() {
 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {		
+				DataSaving.saveEleve("res/csv/eleves.csv", Global.eleves);
+				for (int i = 1; i < 4; ++i) {
+					DataSaving.savePromotion("res/csv/promotion" + i + ".csv", Global.promotions.get(i-1));
+				}
+				DataSaving.saveProfesseur("res/csv/professeurs.csv", Global.professeurs);
+				DataSaving.saveNotes("res/csv/notes.csv", Global.promotions);
+				
+				super.windowClosing(e);
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1280, 720);
 
